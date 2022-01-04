@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8B5EDC"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:id="@+id/editMovieTitle"
+        android:layout_width="match_parent"
+        android:layout_height="73dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="108dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Movie Title"
+        android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/searchMovieButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#6C3077"
+        android:text="Search movie !"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup_typeMovie" />
+
+    <TextView
+        android:id="@+id/recentResearchsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recent researchs"
+        android:textColor="@color/white"
+        android:layout_marginHorizontal="15dp"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/rvPastResearchs"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPastResearchs"
+        android:layout_width="413dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="536dp"
+        android:paddingTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup_typeMovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="320dp"
+        android:checkedButton="@id/radioButton_all"
+        android:foregroundTint="#673AB7"
+        android:orientation="horizontal"
+        android:weightSum="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RadioButton
+            android:id="@+id/radioButton_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:buttonTint="#E91E63"
+            android:text="All" />
+
+        <RadioButton
+            android:id="@+id/radioButton_movie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Movie" />
+
+        <RadioButton
+            android:id="@+id/radioButton_series"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Series" />
+
+        <RadioButton
+            android:id="@+id/radioButton_episode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Episode" />
+
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/editMovieYear"
+        android:layout_width="match_parent"
+        android:layout_height="61dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="256dp"
+        android:backgroundTint="@color/white"
+        android:ems="10"
+        android:hint="Year"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.448"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="236dp"
+
+        android:text="Options"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

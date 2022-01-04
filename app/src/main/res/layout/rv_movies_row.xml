@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="@drawable/rounded_corners"
+    android:backgroundTint="#6C3077"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/rvMovieImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="false"
+        android:layout_marginStart="0dp"
+        android:adjustViewBounds="true"
+        android:duplicateParentState="false"
+        android:scaleType="center"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:src="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/rvMovieTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rvMovieImage"
+        android:minHeight="60dp"
+        android:layout_alignStart="@+id/rvMovieImage"
+        android:layout_alignBottom="@+id/rvMovieImage"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="-69dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="0dp"
+        android:alpha="1"
+        android:background="@drawable/gradient"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingTop="10dp"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+</RelativeLayout>
