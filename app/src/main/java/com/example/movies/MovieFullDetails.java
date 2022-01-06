@@ -3,20 +3,33 @@ package com.example.movies;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.movies.adapter.MovieFullDetailsAdapter;
+import com.example.movies.adapter.MoviesShortDetailsAdapter;
+import com.example.movies.model.MovieModel;
+import com.example.movies.viewmodel.MovieFullDetailsViewModel;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MovieFullDetails extends AppCompatActivity {
+import java.util.List;
 
-    private JSONObject movieDetails;
+public class MovieFullDetails extends AppCompatActivity implements MovieFullDetailsAdapter.ItemClickListener{
+
+    private MovieFullDetailsViewModel viewModel;
+    private MovieModel movieModel;
+    private MovieFullDetailsAdapter movieAdapter;
     private ImageView movieImageView;
     private TextView titleView;
 
@@ -30,22 +43,44 @@ public class MovieFullDetails extends AppCompatActivity {
         titleView = findViewById(R.id.MovieTitle);
 
         Intent intent = getIntent();
-        String movieStr = intent.getStringExtra("movieId");
+        String movieId = intent.getStringExtra("imdbID");
+        Boolean inDataBase = intent.getBooleanExtra("inDataBase", false);
 
-        try {
-            movieDetails = new JSONObject(movieStr);
-            String movieImageLink = movieDetails.getString("Poster");
-            String movieTitle = movieDetails.getString("Title");
+        viewModel = new ViewModelProvider(this).get(MovieFullDetailsViewModel.class);
+        viewModel.getMovieModelObserver().observe(this, new Observer<MovieModel>() {
+            @Override
+            public void onChanged(MovieModel newMovieModel) {
+                if(newMovieModel != null) {
+                    movieModel = newMovieModel;
+                    movieAdapter.setMovie(newMovieModel);
+                } else {
+                    // afficher erreur
+                }
 
-            titleView.setText(movieTitle);
+            }
+        });
 
-            ImageLoader imageLoader = ImageLoader.getInstance();
-            imageLoader.init(ImageLoaderConfiguration.createDefault(getApplicationContext()));
-            imageLoader.displayImage(movieImageLink, movieImageView);
-
-        } catch (Throwable t) {
-            Log.e("My App", "Could not parse malformed JSON on movie full details: \"" + movieStr + "\"");
+        if(inDataBase)
+        {
+            viewModel.makeBaseCall(movieId);
         }
+        else {
+            viewModel.makeApiCall(movieId);
+        }
+
+
+
+        RecyclerView recyclerView = findViewById(R.id.rvMovieDetails);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        movieAdapter = new MovieFullDetailsAdapter(this, movieModel);
+        movieAdapter.setClickListener(this);
+        recyclerView.setAdapter(movieAdapter);
+
+
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
 
     }
 }

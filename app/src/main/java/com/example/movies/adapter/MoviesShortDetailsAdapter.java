@@ -1,4 +1,5 @@
-package com.example.movies;
+package com.example.movies.adapter;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,55 +10,74 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.example.movies.R;
+import com.example.movies.model.shortMovieModel;
 
 import java.util.List;
-import java.util.Map;
 
-public class PastResearchsAdapter extends RecyclerView.Adapter<PastResearchsAdapter.ViewHolder> {
+public class MoviesShortDetailsAdapter extends RecyclerView.Adapter<MoviesShortDetailsAdapter.ViewHolder> {
 
-    private List<String> mData;
-    private LayoutInflater mInflater;
+
+    private List<shortMovieModel> shortMoviesList;
     private ItemClickListener mClickListener;
     private Context context;
 
     // data is passed into the constructor
-    PastResearchsAdapter(Context context, List<String>  data) {
+    public MoviesShortDetailsAdapter(Context context, List<shortMovieModel>  data) {
         super();
         this.context = context;
-        this.mInflater = LayoutInflater.from(context);
-        this.mData = data;
+        this.shortMoviesList = data;
+    }
+
+    public void setShortMoviesList(List<shortMovieModel> shortMoviesList)
+    {
+        this.shortMoviesList = shortMoviesList;
+        notifyDataSetChanged();
     }
 
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.rv_past_research_row, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.rv_movies_row, parent, false);
         return new ViewHolder(view);
     }
 
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String pastResearch = mData.get(position);
-        holder.pastResearchView.setText(pastResearch);
+        String title = shortMoviesList.get(position).getTitle();
+        String imageUrl = shortMoviesList.get(position).getPoster();
+
+        holder.titleView.setText(title);
+        Glide.with(context)
+                        .load(shortMoviesList.get(position)
+                        .getPoster())
+                        .apply(RequestOptions.centerCropTransform())
+                        .into(holder.imageView);
+
 
     }
     // total number of rows
     @Override
     public int getItemCount() {
-        return mData.size();
+        if(shortMoviesList != null)
+            return shortMoviesList.size();
+
+        return 0;
     }
 
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView pastResearchView;
+        TextView titleView;
+        ImageView imageView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            pastResearchView = itemView.findViewById(R.id.pastResearchView);
+            titleView = itemView.findViewById(R.id.rvMovieTitle);
+            imageView = itemView.findViewById(R.id.rvMovieImage);
             itemView.setOnClickListener(this);
         }
 
@@ -68,12 +88,12 @@ public class PastResearchsAdapter extends RecyclerView.Adapter<PastResearchsAdap
     }
 
     // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData.get(id);
+    public shortMovieModel getItem(int id) {
+        return shortMoviesList.get(id);
     }
 
     // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
