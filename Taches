@@ -1,0 +1,58 @@
+1ere itération:
+
+Pour cette première itération nous n'avons pas implémenté d'architecture particuliere. En effet, les appels réseaux 
+sont fais directement dans les activités ainsi que la gestion des données. La sauvegarde des films consultés est faite 
+dans un fichier. Cela causait des problèmes comme une lenteur dans le chargement des images ou de bug quand le telephone
+change d'orientation.
+
+1) Creer les 3 pages (activités) et ajouter les composants neccessaires (Mehdi)
+  Champs de saisie du titre du film
+  Champs de saisie de l'année du film(optionnel)
+  Groupe de checkbox pour le choix du type de fiction (film, serie, episode)
+  Recyclerview qui affiche les films consultés(Page d'accueil)
+  RecyclerView qui afficher les films (images+titre)
+2) Gerer les interractions avec l'utilisateur (Bouton, champs texte...) (Yaakoub)
+3) Gerer les échanges d'information entre les activités (Bundle) (Yaakoub)
+  Il faut passer le nom de film de la page d'accueil à la page de recherche
+  Il faut passer l'identifiant du film de la page recherche à la page details
+4) Afficher les images et titres des films dans la page Recherche (Mehdi)
+5) Enregistrer les recherches réalisées et les afficher dans la page d'accueil (Yaakoub)
+6) Gestion des appels API (Yaakoub)
+
+2eme itération :
+
+Grâce à la mise en place de l'Architecture MVVM, le projet est mieux structuré et les données sont mieux gérées (ainsi que les cycles de vie).
+Les activités ne sont plus responsable que de la gestion des composants (UI), et la récuperation des données se fait dans le ViewModel grace à 
+l'interface MovieAPIService(retrofit).
+
+
+1) Ajout des packets suivant: (Yaakoub)
+ViewModel, model, network, adapter,
+
+1) Les appels réseaux ne se font plus sur les activités directement mais via une interface utilisant Rétrofit. (Mehdi)
+
+2) Les données et la logique métier sont maintenant placés dans un ViewModel pour chaque activité.(Mehdi)
+  Les activités observes les données LiveData de leur ViewModel.
+
+3) Ajout de models pour representer les réponses API (en Json). (Yaakoub)
+
+4) Ajout de model pour representer un film (pour base de données) (Yaakoub)
+
+4) Suppression de la fonctionnalité de sauvegarde des films consultés (anciennement sauvegardé dans un fichier mais prochainement on aura une sauvegarde directement en base de donnée) (Yaakoub)
+
+Taches restantes :
+
+1) Gestion de la base de données (Mehdi)
+    Pouvoir sauvagarder les films que l'utilisateur a consulté
+    Pouvoir afficher sur la page d'accueil les films consultés
+    
+ 2) Implémenter la navigation des pages de resultats (Yaakoub)
+    Quand l'utilisateur tape un nom de film dans la page d'accueil, la page recherche
+    n'afficher que les 10 premiers resultats (il faut refaire une requete avec le bon parametre
+    de page)
+ 
+ 3) Design (Mehdi)
+    Créer la charte graphique de l'application (choix couleurs, police, etc..)
+    Créer une maquette des 3 activités et la coder en android xml
+    
+   
