@@ -4,51 +4,103 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000c24"
     >
 
-    <ImageView
-        android:id="@+id/MovieImage"
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_alignParentStart="false"
-        android:adjustViewBounds="true"
-        android:duplicateParentState="false"
-        android:scaleType="center"
-        android:scaleX="2"
-        android:scaleY="1.7"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_height="400dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/MovieImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/MovieTitle"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/MovieImage"
-        android:layout_alignStart="@+id/MovieImage"
-        android:layout_alignBottom="@+id/MovieImage"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="4dp"
-        android:alpha="1"
-        android:background="@drawable/gradient"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:background="@drawable/gradient_title"
+        android:layout_marginTop="-50dp"
         android:fontFamily="sans-serif-condensed"
-        android:paddingTop="10dp"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MovieImage" />
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 
-    <androidx.recyclerview.widget.RecyclerView
+    <!--<TextView
+        android:id="@+id/MoviePlot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/gradient_title"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MovieTitle" />-->
+
+    <!--<androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovieDetails"
-        android:layout_width="409dp"
-        android:layout_height="365dp"
+        android:layout_width="392dp"
+        android:layout_height="262dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+        -->
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="351dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MovieTitle">
+
+        <LinearLayout
+            android:id="@+id/movieInfoScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="?android:dividerHorizontal"
+            android:showDividers="middle"
+            android:dividerPadding="100dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/MoviePlot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/gradient_title"
+                android:fontFamily="sans-serif-condensed"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

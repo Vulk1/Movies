@@ -52,8 +52,7 @@ public class MoviesShortDetailsAdapter extends RecyclerView.Adapter<MoviesShortD
 
         holder.titleView.setText(title);
         Glide.with(context)
-                        .load(shortMoviesList.get(position)
-                        .getPoster())
+                        .load(shortMoviesList.get(position).getPoster())
                         .apply(RequestOptions.centerCropTransform())
                         .into(holder.imageView);
 

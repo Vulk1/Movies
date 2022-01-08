@@ -2,36 +2,32 @@ package com.example.movies;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.movies.adapter.MovieFullDetailsAdapter;
-import com.example.movies.adapter.MoviesShortDetailsAdapter;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.movies.model.MovieModel;
 import com.example.movies.viewmodel.MovieFullDetailsViewModel;
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
-import java.util.List;
-
-public class MovieFullDetails extends AppCompatActivity implements MovieFullDetailsAdapter.ItemClickListener{
+public class MovieFullDetails extends AppCompatActivity {
 
     private MovieFullDetailsViewModel viewModel;
     private MovieModel movieModel;
-    private MovieFullDetailsAdapter movieAdapter;
     private ImageView movieImageView;
-    private TextView titleView;
+    private TextView movieTitleView;
+    private TextView moviePlotView;
+    private LinearLayout movieInfoLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +36,9 @@ public class MovieFullDetails extends AppCompatActivity implements MovieFullDeta
         setContentView(R.layout.movie_full_details);
 
         movieImageView = findViewById(R.id.MovieImage);
-        titleView = findViewById(R.id.MovieTitle);
+        movieTitleView = findViewById(R.id.MovieTitle);
+        moviePlotView = findViewById(R.id.MoviePlot);
+        movieInfoLayout = findViewById(R.id.movieInfoScrollView);
 
         Intent intent = getIntent();
         String movieId = intent.getStringExtra("imdbID");
@@ -52,7 +50,31 @@ public class MovieFullDetails extends AppCompatActivity implements MovieFullDeta
             public void onChanged(MovieModel newMovieModel) {
                 if(newMovieModel != null) {
                     movieModel = newMovieModel;
-                    movieAdapter.setMovie(newMovieModel);
+
+                    Glide.with(getApplicationContext())
+                            .load(movieModel.getPoster())
+                            .apply(RequestOptions.centerCropTransform())
+                            .into(movieImageView);
+
+                    movieTitleView.setText(movieModel.getTitle());
+                    moviePlotView.setText(movieModel.getPlot());
+
+                    Map<String, String> movieAttributsMap = new ObjectMapper().convertValue(movieModel, LinkedHashMap.class);
+
+                    for (Map.Entry<String, String> entry : movieAttributsMap.entrySet()) {
+                                View child = getLayoutInflater().inflate(R.layout.movie_detail_row, null);
+                                movieInfoLayout.addView(child);
+
+                                TextView label = child.findViewById(R.id.attributeLabel);
+                                TextView description = child.findViewById(R.id.attributeDescription);
+
+                                String labelStr = entry.getKey().substring(0, 1).toUpperCase() + entry.getKey().substring(1);
+                                label.setText(labelStr);
+
+                                if(! entry.getKey().equals("ratings"))
+                                    description.setText(entry.getValue());
+
+                    }
                 } else {
                     // afficher erreur
                 }
@@ -67,20 +89,5 @@ public class MovieFullDetails extends AppCompatActivity implements MovieFullDeta
         else {
             viewModel.makeApiCall(movieId);
         }
-
-
-
-        RecyclerView recyclerView = findViewById(R.id.rvMovieDetails);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        movieAdapter = new MovieFullDetailsAdapter(this, movieModel);
-        movieAdapter.setClickListener(this);
-        recyclerView.setAdapter(movieAdapter);
-
-
-    }
-
-    @Override
-    public void onItemClick(View view, int position) {
-
     }
 }
