@@ -3,28 +3,39 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.movies.R;
+import com.example.movies.model.shortMovieModel;
+import com.example.movies.repository.Movie;
 
 import java.util.List;
 
 public class PastResearchsAdapter extends RecyclerView.Adapter<PastResearchsAdapter.ViewHolder> {
 
-    private List<String> mData;
+    private List<Movie> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private Context context;
 
     // data is passed into the constructor
-    PastResearchsAdapter(Context context, List<String>  data) {
+    public PastResearchsAdapter(Context context, List<Movie> data) {
         super();
         this.context = context;
         this.mInflater = LayoutInflater.from(context);
         this.mData = data;
+    }
+
+    public void setMoviesList(List<Movie> moviesList)
+    {
+        this.mData = moviesList;
+        notifyDataSetChanged();
     }
 
     // inflates the row layout from xml when needed
@@ -37,24 +48,35 @@ public class PastResearchsAdapter extends RecyclerView.Adapter<PastResearchsAdap
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        String pastResearch = mData.get(position);
-        holder.pastResearchView.setText(pastResearch);
+
+        holder.titleView.setText(mData.get(position).getTitle());
+
+        Glide.with(context)
+                .load(mData.get(position).getPosterUrl())
+                .apply(RequestOptions.centerCropTransform())
+                .into(holder.posterView);
+
+
 
     }
     // total number of rows
     @Override
     public int getItemCount() {
-        return mData.size();
+        if(mData != null)
+            return mData.size();
+        return 0;
     }
 
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView pastResearchView;
+        ImageView posterView;
+        TextView titleView;
 
         ViewHolder(View itemView) {
             super(itemView);
-            pastResearchView = itemView.findViewById(R.id.pastResearchView);
+            titleView = itemView.findViewById(R.id.titleView);
+            posterView = itemView.findViewById(R.id.posterView);
             itemView.setOnClickListener(this);
         }
 
@@ -65,12 +87,12 @@ public class PastResearchsAdapter extends RecyclerView.Adapter<PastResearchsAdap
     }
 
     // convenience method for getting data at click position
-    String getItem(int id) {
-        return mData.get(id);
+   public Movie getItem(int position) {
+        return mData.get(position);
     }
 
     // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 

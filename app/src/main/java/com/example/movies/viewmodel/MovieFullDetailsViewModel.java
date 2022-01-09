@@ -1,7 +1,9 @@
 package com.example.movies.viewmodel;
 
+import android.app.Application;
 import android.util.Log;
 
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -14,12 +16,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MovieFullDetailsViewModel extends ViewModel {
+public class MovieFullDetailsViewModel extends AndroidViewModel {
 
         private MutableLiveData<MovieModel> movieModel;
         private final String API_KEY = "f8f3592d";
 
-        public MovieFullDetailsViewModel() {
+        public MovieFullDetailsViewModel(Application application) {
+                super(application);
                 movieModel = new MutableLiveData<>();
         }
 

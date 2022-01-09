@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
+    android:layout_marginVertical="20dp"
     android:background="@drawable/rounded_corners"
-    android:backgroundTint="#6C3077"
+    android:backgroundTint="#000c24"
     android:orientation="horizontal"
-    android:padding="10dp">
+    >
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
     <ImageView
         android:id="@+id/rvMovieImage"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="false"
-        android:layout_marginStart="0dp"
-        android:adjustViewBounds="true"
-        android:duplicateParentState="false"
-        android:scaleType="center"
-        android:scaleX="2"
-        android:scaleY="2"
-        android:src="@drawable/ic_launcher_foreground" />
+        android:layout_height="match_parent"
+         />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/rvMovieTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rvMovieImage"
         android:minHeight="60dp"
-        android:layout_alignStart="@+id/rvMovieImage"
-        android:layout_alignBottom="@+id/rvMovieImage"
+        android:paddingTop="30dp"
+        android:layout_marginTop="-50dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="-69dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="0dp"
-        android:alpha="1"
-        android:background="@drawable/gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        android:background="@drawable/gradient_title"
         android:fontFamily="sans-serif-condensed"
-        android:paddingTop="10dp"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

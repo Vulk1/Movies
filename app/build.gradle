@@ -48,4 +48,12 @@ dependencies {
     /* Jackson */
     implementation 'com.fasterxml.jackson.core:jackson-core:2.10.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.1'
+
+    // Room components
+    implementation "androidx.room:room-runtime:2.3.0"
+    annotationProcessor "androidx.room:room-compiler:2.3.0"
+    androidTestImplementation "androidx.room:room-testing:2.3.0"
+
+    // Room et Rx
+    implementation 'androidx.room:room-rxjava2:2.3.0'
 }

@@ -3,6 +3,7 @@ package com.example.movies;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -21,6 +22,7 @@ public class Recherches extends AppCompatActivity implements MoviesShortDetailsA
     private MoviesShortDetailsAdapter shortMoviesAdapter;
     private List<shortMovieModel> shortMovieModelList;
     private RecherchesViewModel viewModel;
+    private TextView noResultView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +30,12 @@ public class Recherches extends AppCompatActivity implements MoviesShortDetailsA
         getSupportActionBar().hide();
         setContentView(R.layout.recherches_layout);
 
+        noResultView = findViewById(R.id.noResultView);
+
         Intent intent = getIntent();
         String movieTitle = intent.getStringExtra("Title");
+        String movieType = intent.getStringExtra("Type");
+        String movieYear = intent.getStringExtra("Year");
 
 
         viewModel = new ViewModelProvider(this).get(RecherchesViewModel.class);
@@ -40,9 +46,10 @@ public class Recherches extends AppCompatActivity implements MoviesShortDetailsA
                 {
                     shortMovieModelList = shortMovieModels;
                     shortMoviesAdapter.setShortMoviesList(shortMovieModelList);
+                    noResultView.setVisibility(View.GONE);
                 }
                 else {
-                    //afficher no results
+                    noResultView.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -53,7 +60,7 @@ public class Recherches extends AppCompatActivity implements MoviesShortDetailsA
         shortMoviesAdapter.setClickListener(this);
         recyclerView.setAdapter(shortMoviesAdapter);
 
-        viewModel.makeApiCall(movieTitle);
+        viewModel.makeApiCall(movieTitle, movieType, movieYear);
 
         }
 
@@ -67,6 +74,7 @@ public class Recherches extends AppCompatActivity implements MoviesShortDetailsA
         Intent intent = new Intent(this, MovieFullDetails.class);
         intent.putExtra("imdbID", movieId);
 
+        viewModel.insertMovieInBase(shortMoviesAdapter.getItem(position));
         startActivity(intent);
     }
 

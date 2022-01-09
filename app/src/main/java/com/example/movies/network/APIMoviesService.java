@@ -13,7 +13,7 @@ public interface APIMoviesService {
 
 
     @GET(".")
-    Call<MovieSearchResponse> getShortMovieList( @Query("s") String movieName, @Query("apikey") String apiKey);
+    Call<MovieSearchResponse> getShortMovieList( @Query("s") String movieName,@Query("type") String movieType, @Query("y") String movieYear,  @Query("apikey") String apiKey);
 
     @GET(".")
     Call<MovieModel> getMovie( @Query("i") String movieId, @Query("apikey") String apiKey);

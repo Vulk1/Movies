@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#8B5EDC"
+    android:background="@color/primary_color"
     tools:context=".MainActivity">
 
     <EditText
@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="73dp"
         android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="150dp"
         android:backgroundTint="@color/white"
         android:ems="10"
         android:hint="Movie Title"
@@ -24,13 +24,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/searchMovieButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:background="#6C3077"
+        android:layout_marginTop="40dp"
+        android:background="@color/secondary_color"
+        android:padding="20dp"
         android:text="Search movie !"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup_typeMovie" />
@@ -39,7 +41,7 @@
         android:id="@+id/recentResearchsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Recent researchs"
+        android:text="Recent research"
         android:textColor="@color/white"
         android:layout_marginHorizontal="15dp"
         android:textSize="20sp"
@@ -49,10 +51,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPastResearchs"
-        android:layout_width="413dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="536dp"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="525dp"
+        android:divider="?android:dividerHorizontal"
+        android:dividerPadding="100dp"
         android:paddingTop="10dp"
+        android:showDividers="middle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +70,7 @@
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="320dp"
         android:checkedButton="@id/radioButton_all"
-        android:foregroundTint="#673AB7"
+        android:foregroundTint="#00a4d9"
         android:orientation="horizontal"
         android:weightSum="4"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,13 +82,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:buttonTint="#E91E63"
+            android:buttonTint="@color/secondary_color"
             android:text="All" />
 
         <RadioButton
             android:id="@+id/radioButton_movie"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="@color/secondary_color"
             android:layout_weight="1"
             android:text="Movie" />
 
@@ -91,6 +97,7 @@
             android:id="@+id/radioButton_series"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="@color/secondary_color"
             android:layout_weight="1"
             android:text="Series" />
 
@@ -98,6 +105,7 @@
             android:id="@+id/radioButton_episode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:buttonTint="@color/secondary_color"
             android:layout_weight="1"
             android:text="Episode" />
 
@@ -129,6 +137,29 @@
         android:text="Options"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/app_logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="28dp"
+        android:text="Movie Finder"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
 
