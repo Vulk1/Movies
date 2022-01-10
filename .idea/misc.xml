@@ -15,7 +15,15 @@
         <entry key="..\:/Users/33773/AndroidStudioProjects/Movies/app/src/main/res/layout/recherches_layout.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/33773/AndroidStudioProjects/Movies/app/src/main/res/layout/rv_movies_row.xml" value="0.25" />
         <entry key="..\:/Users/33773/AndroidStudioProjects/Movies/app/src/main/res/layout/rv_past_research_row.xml" value="0.27291666666666664" />
-        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/drawable/gradient.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/drawable/rounded_corners.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/drawable/rounded_corners_light.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/movie_detail_row.xml" value="0.1" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/movie_full_details.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/recherches_layout.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/rv_movies_row.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/rv_past_research_row.xml" value="0.1796875" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.14635416666666667" />
       </map>

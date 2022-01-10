@@ -58,9 +58,9 @@ public class MovieFullDetails extends AppCompatActivity {
                     movieTitleView.setText(movieModel.getTitle());
                     moviePlotView.setText(movieModel.getPlot());
 
-                    Map<String, String> movieAttributsMap = new ObjectMapper().convertValue(movieModel, LinkedHashMap.class);
+                    Map<String, String> movieAttributesMap = new ObjectMapper().convertValue(movieModel, LinkedHashMap.class);
 
-                    for (Map.Entry<String, String> entry : movieAttributsMap.entrySet()) {
+                    for (Map.Entry<String, String> entry : movieAttributesMap.entrySet()) {
                                 View child = getLayoutInflater().inflate(R.layout.movie_detail_row, null);
                                 movieInfoLayout.addView(child);
 
@@ -75,7 +75,7 @@ public class MovieFullDetails extends AppCompatActivity {
 
                     }
                 } else {
-                    // afficher erreur
+                    // show error
                 }
 
             }

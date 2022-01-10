@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import com.example.movies.adapter.PastResearchsAdapter;
@@ -43,7 +42,6 @@ public class MainActivity extends AppCompatActivity  implements PastResearchsAda
 
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
 
-
         searchButton = findViewById(R.id.searchMovieButton);
         movieTitleEdit = findViewById(R.id.editMovieTitle);
         movieYearEdit = findViewById(R.id.editMovieYear);
@@ -59,10 +57,8 @@ public class MainActivity extends AppCompatActivity  implements PastResearchsAda
         });
 
         RecyclerView recyclerView = findViewById(R.id.rvPastResearchs);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        /*layoutManager.setStackFromEnd(true);
-        layoutManager.setReverseLayout(true);
-        layoutManager.setSmoothScrollbarEnabled(true);*/
         recyclerView.setLayoutManager(layoutManager);
         adapter = new PastResearchsAdapter(this, movieList);
         adapter.setClickListener(this);

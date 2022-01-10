@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Movie Finder</string>
+    <string name="movie_title_search">Movie Title</string>
+    <string name="search_button">Search Movie</string>
+    <string name="recent_search_title">Recent search</string>
+    <string name="radio_all">All</string>
+    <string name="radio_movie">Movie</string>
+    <string name="radio_series">Series</string>
+    <string name="radio_episode">Episode</string>
+    <string name="placeholder_year">Year</string>
+    <string name="options_title">Options</string>
+    <string name="app_name_logo">Movie Finder</string>
+    <string name="contentDescription_logo">App Logo</string>
 </resources>
