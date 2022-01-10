@@ -2,6 +2,7 @@ package com.example.movies;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.movies.adapter.MoviesShortDetailsAdapter;
 import com.example.movies.model.shortMovieModel;
+import com.example.movies.repository.MovieRepository;
 import com.example.movies.viewmodel.RecherchesViewModel;
 
 import java.util.List;
@@ -62,10 +64,7 @@ public class Recherches extends AppCompatActivity implements MoviesShortDetailsA
 
         viewModel.makeApiCall(movieTitle, movieType, movieYear);
 
-        }
-
-
-
+    }
 
     @Override
     public void onItemClick(View view, int position) {
@@ -74,7 +73,6 @@ public class Recherches extends AppCompatActivity implements MoviesShortDetailsA
         Intent intent = new Intent(this, MovieFullDetails.class);
         intent.putExtra("imdbID", movieId);
 
-        viewModel.insertMovieInBase(shortMoviesAdapter.getItem(position));
         startActivity(intent);
     }
 

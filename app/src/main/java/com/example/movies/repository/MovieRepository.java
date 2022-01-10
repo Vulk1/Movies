@@ -28,8 +28,8 @@ public class MovieRepository {
     }
     public void delete(Movie movie) {
         new DeleteMovieAsyncTask(movieDao).execute(movie);
-
     }
+
 
     public void deleteAllMovies() {
         new DeleteAllMovieAsyncTask(movieDao).execute();
@@ -49,7 +49,8 @@ public class MovieRepository {
 
         @Override
         protected Void doInBackground(Movie... movies) {
-            movieDao.insert(movies[0]);
+            if(!movieDao.isMovieExist(movies[0].getId()))
+                movieDao.insert(movies[0]);
             return null;
         }
     }
@@ -98,6 +99,4 @@ public class MovieRepository {
             return null;
         }
     }
-
-
 }

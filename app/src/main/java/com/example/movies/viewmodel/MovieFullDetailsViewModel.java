@@ -8,9 +8,12 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.movies.model.MovieModel;
+import com.example.movies.model.shortMovieModel;
 import com.example.movies.network.APIMoviesService;
 import com.example.movies.network.MovieSearchResponse;
 import com.example.movies.network.RetroInstance;
+import com.example.movies.repository.Movie;
+import com.example.movies.repository.MovieRepository;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,11 +22,13 @@ import retrofit2.Response;
 public class MovieFullDetailsViewModel extends AndroidViewModel {
 
         private MutableLiveData<MovieModel> movieModel;
+        private MovieRepository movieRepository;
         private final String API_KEY = "f8f3592d";
 
         public MovieFullDetailsViewModel(Application application) {
                 super(application);
                 movieModel = new MutableLiveData<>();
+                movieRepository = new MovieRepository(application);
         }
 
         public MutableLiveData<MovieModel> getMovieModelObserver() {
@@ -38,6 +43,7 @@ public class MovieFullDetailsViewModel extends AndroidViewModel {
                         @Override
                         public void onResponse(Call<MovieModel> call, Response<MovieModel> response) {
                                 movieModel.postValue(response.body());
+                                insertMovieInBase(response.body());
                         }
 
                         @Override
@@ -48,7 +54,8 @@ public class MovieFullDetailsViewModel extends AndroidViewModel {
 
         }
 
-        public void makeBaseCall(String movieId) {
-
+        public void insertMovieInBase(MovieModel movieModel) {
+                movieRepository.insert(new Movie(movieModel.getImdbID(), movieModel.getTitle(),
+                        movieModel.getPoster()));
         }
 }

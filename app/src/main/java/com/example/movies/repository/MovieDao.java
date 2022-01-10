@@ -26,4 +26,8 @@ public interface MovieDao {
 
     @Query("DELETE FROM movie_table")
     void deleteAllMovies();
+
+    @Query("SELECT EXISTS(SELECT * FROM movie_table WHERE id LIKE :movieId)")
+    Boolean isMovieExist(String movieId);
+
 }

@@ -42,7 +42,6 @@ public class MovieFullDetails extends AppCompatActivity {
 
         Intent intent = getIntent();
         String movieId = intent.getStringExtra("imdbID");
-        Boolean inDataBase = intent.getBooleanExtra("inDataBase", false);
 
         viewModel = new ViewModelProvider(this).get(MovieFullDetailsViewModel.class);
         viewModel.getMovieModelObserver().observe(this, new Observer<MovieModel>() {
@@ -82,12 +81,8 @@ public class MovieFullDetails extends AppCompatActivity {
             }
         });
 
-        if(inDataBase)
-        {
-            viewModel.makeBaseCall(movieId);
-        }
-        else {
-            viewModel.makeApiCall(movieId);
-        }
+
+        viewModel.makeApiCall(movieId);
+
     }
 }

@@ -23,14 +23,12 @@ import retrofit2.Response;
 
 public class RecherchesViewModel  extends AndroidViewModel {
 
-    private MovieRepository movieRepository;
     private MutableLiveData<List<shortMovieModel>> shortMoviesList;
     private final String API_KEY = "f8f3592d";
 
     public RecherchesViewModel(@NonNull Application application) {
         super(application);
         shortMoviesList = new MutableLiveData<>();
-        movieRepository = new MovieRepository(application);
     }
 
     public MutableLiveData<List<shortMovieModel>> getShortMoviesListObserver()
@@ -56,8 +54,4 @@ public class RecherchesViewModel  extends AndroidViewModel {
 
     }
 
-    public void insertMovieInBase(shortMovieModel shortMovieModel) {
-        movieRepository.insert(new Movie(shortMovieModel.getMovieId(), shortMovieModel.getTitle(),
-                shortMovieModel.getPoster()));
-    }
 }
