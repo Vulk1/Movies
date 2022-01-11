@@ -11,4 +11,6 @@
     <string name="options_title">Options</string>
     <string name="app_name_logo">Movie Finder</string>
     <string name="contentDescription_logo">App Logo</string>
+    <string name="movie_image">Movie Image</string>
+    <string name="no_results">Sorry :(  No movie found !</string>
 </resources>

@@ -18,9 +18,13 @@
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/drawable/gradient.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/drawable/rounded_corners.xml" value="0.19583333333333333" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/drawable/rounded_corners_light.xml" value="0.19583333333333333" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/font/ff_mark.xml" value="0.16041666666666668" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/font/mark_bold.xml" value="0.28" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/font/mark_regular.xml" value="0.16041666666666668" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/font/open_sans.xml" value="0.16041666666666668" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/movie_detail_row.xml" value="0.1" />
-        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/movie_full_details.xml" value="0.17135416666666667" />
+        <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/movie_full_details.xml" value="0.1" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/recherches_layout.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/rv_movies_row.xml" value="0.17135416666666667" />
         <entry key="..\:/Users/super/AndroidStudioProjects/Movies/app/src/main/res/layout/rv_past_research_row.xml" value="0.1796875" />

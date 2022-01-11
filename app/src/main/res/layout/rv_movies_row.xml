@@ -18,29 +18,29 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-    <ImageView
-        android:id="@+id/rvMovieImage"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-         />
+        <ImageView
+            android:id="@+id/rvMovieImage"
+            android:layout_width="match_parent"
+            android:layout_height="342dp"
+            android:contentDescription="@string/movie_image" />
     </FrameLayout>
 
     <TextView
         android:id="@+id/rvMovieTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-20dp"
+        android:background="@drawable/gradient_title"
+        android:fontFamily="@font/mark_regular"
         android:minHeight="60dp"
         android:paddingTop="30dp"
-        android:layout_marginTop="-50dp"
-        android:layout_alignParentEnd="true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
-        android:background="@drawable/gradient_title"
-        android:fontFamily="sans-serif-condensed"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

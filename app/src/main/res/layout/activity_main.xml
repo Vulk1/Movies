@@ -15,7 +15,9 @@
         android:layout_marginTop="150dp"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:fontFamily="@font/mark_regular"
         android:hint="@string/movie_title_search"
+        android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/white"
@@ -23,8 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/searchMovieButton"
@@ -32,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:background="@color/secondary_color"
+        android:fontFamily="@font/mark_regular"
         android:padding="20dp"
         android:text="@string/search_button"
         android:textColor="@color/white"
@@ -45,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
+        android:fontFamily="@font/mark_bold"
         android:text="@string/recent_search_title"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -57,6 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_marginTop="525dp"
+        android:fontFamily="@font/mark_regular"
         android:divider="?android:dividerHorizontal"
         android:dividerPadding="100dp"
         android:paddingTop="10dp"
@@ -86,8 +90,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="@color/secondary_color"
+            android:fontFamily="@font/mark_light"
             android:text="@string/radio_all"
-            android:textColor="@color/hint_color" />
+            android:textColor="@color/hint_color"
+            android:textSize="12sp" />
 
         <RadioButton
             android:id="@+id/radioButton_movie"
@@ -95,8 +101,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="@color/secondary_color"
+            android:fontFamily="@font/mark_light"
             android:text="@string/radio_movie"
-            android:textColor="@color/hint_color" />
+            android:textColor="@color/hint_color"
+            android:textSize="12sp" />
 
         <RadioButton
             android:id="@+id/radioButton_series"
@@ -104,8 +112,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="@color/secondary_color"
+            android:fontFamily="@font/mark_light"
             android:text="@string/radio_series"
-            android:textColor="@color/hint_color" />
+            android:textColor="@color/hint_color"
+            android:textSize="12sp" />
 
         <RadioButton
             android:id="@+id/radioButton_episode"
@@ -113,8 +123,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="@color/secondary_color"
+            android:fontFamily="@font/mark_light"
             android:text="@string/radio_episode"
-            android:textColor="@color/hint_color" />
+            android:textColor="@color/hint_color"
+            android:textSize="12sp" />
 
 
     </RadioGroup>
@@ -127,15 +139,16 @@
         android:layout_marginTop="256dp"
         android:backgroundTint="@color/white"
         android:ems="10"
+        android:fontFamily="@font/mark_regular"
         android:hint="@string/placeholder_year"
+        android:importantForAutofill="no"
         android:inputType="date"
         android:textColor="@color/hint_color"
         android:textColorHint="@color/hint_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Options"
@@ -143,6 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="236dp"
+        android:fontFamily="@font/mark_bold"
         android:text="@string/options_title"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
@@ -165,10 +179,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="28dp"
+        android:fontFamily="@font/mark_heavy"
         android:text="@string/app_name_logo"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
