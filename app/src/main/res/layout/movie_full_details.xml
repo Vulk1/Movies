@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000c24"
-    >
+    android:background="#000c24">
 
 
     <FrameLayout
@@ -19,8 +17,8 @@
         <ImageView
             android:id="@+id/MovieImage"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="327dp"
+            android:contentDescription="@string/movie_image" />
 
 
     </FrameLayout>
@@ -29,18 +27,18 @@
         android:id="@+id/MovieTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
+        android:layout_marginTop="-200dp"
         android:background="@drawable/gradient_title"
-        android:layout_marginTop="-50dp"
-        android:fontFamily="sans-serif-condensed"
+        android:paddingTop="30dp"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ScrollView
@@ -55,12 +53,12 @@
         <LinearLayout
             android:id="@+id/movieInfoScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="?android:dividerHorizontal"
-            android:showDividers="middle"
-            android:dividerPadding="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:orientation="vertical">
+            android:divider="?android:dividerHorizontal"
+            android:dividerPadding="100dp"
+            android:orientation="vertical"
+            android:showDividers="middle">
 
             <TextView
                 android:id="@+id/MoviePlot"
@@ -78,4 +76,20 @@
 
 
     </ScrollView>
+
+    <TextView
+        android:id="@+id/noResultView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/noResultStr"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+      />
 </androidx.constraintlayout.widget.ConstraintLayout>

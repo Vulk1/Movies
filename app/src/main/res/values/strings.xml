@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Movie Finder</string>
+    <string name="movieTitleStr">Movie Title</string>
+    <string name="searchMovieStr">Search movie !</string>
+    <string name="recentResearchStr">Recent Research</string>
+    <string name="allStr">All</string>
+    <string name="movieStr">Movie</string>
+    <string name="serieStr">Serie</string>
+    <string name="episodeStr">Episode</string>
+    <string name="yearStr">Year</string>
+    <string name="optionsStr">Options</string>
+    <string name="noResultStr">Sorry :(   No movie found !</string>
+    <string name="movie_image">image</string>
 </resources>

@@ -2,7 +2,6 @@ package com.example.movies;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,10 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.movies.adapter.MoviesShortDetailsAdapter;
 import com.example.movies.model.shortMovieModel;
-import com.example.movies.repository.MovieRepository;
 import com.example.movies.viewmodel.RecherchesViewModel;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Recherches extends AppCompatActivity implements MoviesShortDetailsAdapter.ItemClickListener {
 
@@ -29,7 +28,7 @@ public class Recherches extends AppCompatActivity implements MoviesShortDetailsA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.recherches_layout);
 
         noResultView = findViewById(R.id.noResultView);
