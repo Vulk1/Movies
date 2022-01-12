@@ -15,6 +15,10 @@ import com.example.movies.network.RetroInstance;
 import com.example.movies.repository.Movie;
 import com.example.movies.repository.MovieRepository;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,16 +28,21 @@ public class MovieFullDetailsViewModel extends AndroidViewModel {
         private MutableLiveData<MovieModel> movieModel;
         private MovieRepository movieRepository;
         private final String API_KEY = "f8f3592d";
+        public List<String> infos ;
 
         public MovieFullDetailsViewModel(Application application) {
                 super(application);
                 movieModel = new MutableLiveData<>();
                 movieRepository = new MovieRepository(application);
+                infos = Arrays.asList(new String[] { "actors", "awards", "year", "runtime", "genre", "language", "country", "writter", "type", "boxOffice"});
+
         }
 
         public MutableLiveData<MovieModel> getMovieModelObserver() {
                 return movieModel;
         }
+
+        public List<String> getMovieInfosLabels() { return infos;}
 
         public void makeApiCall(String movieId)
         {

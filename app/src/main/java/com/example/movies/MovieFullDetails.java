@@ -28,6 +28,7 @@ public class MovieFullDetails extends AppCompatActivity {
     private TextView movieTitleView;
     private TextView moviePlotView;
     private LinearLayout movieInfoLayout;
+    private TextView noResultView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class MovieFullDetails extends AppCompatActivity {
         movieTitleView = findViewById(R.id.MovieTitle);
         moviePlotView = findViewById(R.id.MoviePlot);
         movieInfoLayout = findViewById(R.id.movieInfoScrollView);
+        noResultView = findViewById(R.id.noResultView);
 
         Intent intent = getIntent();
         String movieId = intent.getStringExtra("imdbID");
@@ -60,22 +62,25 @@ public class MovieFullDetails extends AppCompatActivity {
 
                     Map<String, String> movieAttributesMap = new ObjectMapper().convertValue(movieModel, LinkedHashMap.class);
 
+
                     for (Map.Entry<String, String> entry : movieAttributesMap.entrySet()) {
-                                View child = getLayoutInflater().inflate(R.layout.movie_detail_row, null);
-                                movieInfoLayout.addView(child);
+                        if( viewModel.getMovieInfosLabels().contains(entry.getKey()) ) {
+                            View child = getLayoutInflater().inflate(R.layout.movie_detail_row, null);
+                            movieInfoLayout.addView(child);
 
-                                TextView label = child.findViewById(R.id.attributeLabel);
-                                TextView description = child.findViewById(R.id.attributeDescription);
+                            TextView label = child.findViewById(R.id.attributeLabel);
+                            TextView description = child.findViewById(R.id.attributeDescription);
 
-                                String labelStr = entry.getKey().substring(0, 1).toUpperCase() + entry.getKey().substring(1);
-                                label.setText(labelStr);
-
-                                if(! entry.getKey().equals("ratings"))
-                                    description.setText(entry.getValue());
+                            String labelStr = entry.getKey().substring(0, 1).toUpperCase() + entry.getKey().substring(1);
+                            label.setText(labelStr);
+                            description.setText(entry.getValue());
+                            noResultView.setVisibility(View.GONE);
+                        }
 
                     }
                 } else {
-                    // show error
+
+                    noResultView.setVisibility(View.VISIBLE);
                 }
 
             }
